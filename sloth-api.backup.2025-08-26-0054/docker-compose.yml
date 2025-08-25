@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+    nginx:
+        image: nginx:latest
+        container_name: sloth_nginx
+        ports:
+            - "8876:80"
+        volumes:
+            - ./:/var/www
+            - ./_docker/nginx/conf.d:/etc/nginx/conf.d:ro
+        depends_on:
+            - app
+
+    app:
+        build:
+            context: .
+            dockerfile: _docker/app/Dockerfile
+        container_name: sloth_app
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - sloth
+        environment:
+            DB_CONNECTION: pgsql
+            DB_HOST: sloth_db
+            DB_PORT: "5432"
+            DB_DATABASE: sloth
+            DB_USERNAME: postgres
+            DB_PASSWORD: root
+
+    sloth:
+        image: postgres:16-alpine
+        container_name: sloth
+        restart: always
+        environment:
+            POSTGRES_DB: sloth
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: root
+        volumes:
+            - ./tmp/pgdata:/var/lib/postgresql/data
+        ports:
+            - "8102:5432"
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U postgres -d sloth"]
+            interval: 5s
+            timeout: 3s
+            retries: 10
