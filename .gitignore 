@@ -1,0 +1,27 @@
+cat > .gitignore <<'EOF'
+# IDE
+.idea/
+
+# Backend (Laravel)
+sloth-api/vendor/
+sloth-api/storage/
+sloth-api/bootstrap/cache/
+sloth-api/.env
+sloth-api/.env.*
+sloth-api/tmp/
+sloth-api/docker/**/data/
+sloth-api/docker/**/pgdata/
+sloth-api/**/node_modules/
+
+# Frontend (Vue)
+sloth-front/node_modules/
+sloth-front/dist/
+sloth-front/.env
+sloth-front/.env.*
+sloth-front/.vite/
+sloth-front/coverage/
+
+# OS junk
+.DS_Store
+Thumbs.db
+EOF
