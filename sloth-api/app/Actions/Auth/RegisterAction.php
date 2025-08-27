@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 class RegisterAction
 {
     use ErrorsTrait;
+
     /**
      * @throws \Exception
      */

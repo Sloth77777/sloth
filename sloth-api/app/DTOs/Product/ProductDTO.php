@@ -13,11 +13,11 @@ class ProductDTO extends BaseDTO
         public string $slug,
         public string $description,
         public string $previewImage,
-        public float $price,
-        public float $priceLatest,
-        public float $discount,
-        public float $main_category_id,
-        public array $images,
+        public float  $price,
+        public float  $priceLatest,
+        public float  $discount,
+        public float  $main_category_id,
+        public array  $images,
     )
     {
     }

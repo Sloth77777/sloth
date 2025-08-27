@@ -47,7 +47,7 @@ readonly class MergeGuestCartOnLogin implements ShouldQueue
 
             foreach ($guestCart->items as $gItem) {
                 $productId = $gItem->product_id;
-                $qty = (int) ($gItem->quantity ?? 1);
+                $qty = (int)($gItem->quantity ?? 1);
 
                 if ($productId === null) {
                     continue;
@@ -55,12 +55,12 @@ readonly class MergeGuestCartOnLogin implements ShouldQueue
 
                 $uItem = $userItemsByProduct->get($productId);
                 if ($uItem) {
-                    $uItem->quantity = (int) $uItem->quantity + $qty;
+                    $uItem->quantity = (int)$uItem->quantity + $qty;
                     $uItem->save();
                 } else {
                     $userCart->items()->create([
                         'product_id' => $productId,
-                        'quantity'   => $qty,
+                        'quantity' => $qty,
                     ]);
                 }
             }

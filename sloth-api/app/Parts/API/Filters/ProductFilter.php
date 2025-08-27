@@ -6,7 +6,6 @@ namespace App\Parts\API\Filters;
 
 use App\Enum\ProductFilterEnum;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Log;
 
 class ProductFilter extends AbstractFilter
 {
@@ -29,7 +28,7 @@ class ProductFilter extends AbstractFilter
 
     public function categories(Builder $builder, $values): void
     {
-        $builder->whereIn('category_id', (array) $values);
+        $builder->whereIn('category_id', (array)$values);
     }
 
     public function priceMin(Builder $builder, $value): void
@@ -41,6 +40,7 @@ class ProductFilter extends AbstractFilter
     {
         $builder->where('price', '<=', $value);
     }
+
     public function prices(Builder $builder, $value): void
     {
         if (is_array($value)) {

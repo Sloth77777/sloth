@@ -7,16 +7,17 @@ namespace App\Services\Orders;
 use App\Events\OrderCreated;
 use App\Models\Order\Order;
 use App\Models\Order\OrderItem;
-use App\Services\Cart\CartResolver;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Product\Product;
+use App\Services\Cart\CartResolver;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 readonly class OrderCreator
 {
     public function __construct(
         private CartResolver $cartResolver,
-    ) {
+    )
+    {
     }
 
     public function createFromCart(array $payload, ?int $userId = null): Order
@@ -58,7 +59,7 @@ readonly class OrderCreator
                 $items = $cart->items->map(static function ($item) {
                     return (object)[
                         'product' => $item->product,
-                        'quantity' => (int) ($item->quantity ?? 1),
+                        'quantity' => (int)($item->quantity ?? 1),
                     ];
                 });
             } else {
@@ -81,8 +82,8 @@ readonly class OrderCreator
 
             foreach ($items as $item) {
                 $product = $item->product;
-                $qty = (int) ($item->quantity ?? 1);
-                $price = (int) ($product->price_latest ?? $product->price ?? 0);
+                $qty = (int)($item->quantity ?? 1);
+                $price = (int)($product->price_latest ?? $product->price ?? 0);
 
                 if (!$product) {
                     continue;

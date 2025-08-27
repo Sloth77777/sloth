@@ -37,7 +37,8 @@ class RegisterRequest extends FormRequest
             'password_confirmation' => 'required',
         ];
     }
-    public function toDto():RegisterDTO
+
+    public function toDto(): RegisterDTO
     {
         return RegisterDTO::fromArray($this->validated());
     }

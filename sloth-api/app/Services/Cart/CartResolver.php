@@ -54,6 +54,7 @@ class CartResolver
 
         return Cart::query()->firstOrCreate(['guest_token' => $guestToken]);
     }
+
     public function currentGuestToken(Request $request): ?string
     {
         return $request->user() ? null : $this->getGuestTokenFromRequest($request);

@@ -23,6 +23,7 @@ class ProductImages extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
     public function getImageUrlsAttribute(): array
     {
         return array_map(static fn($img) => url('storage/' . $img), $this->images ?? []);

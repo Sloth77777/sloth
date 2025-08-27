@@ -13,7 +13,6 @@ use App\Parts\API\Resources\Product\ProductResource;
 use App\Parts\API\Services\Product\ProductService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -56,7 +55,7 @@ class ProductController extends Controller
     {
         $words = explode(' ', $product->title);
         $related = Product::query()->where('id', '!=', $product->id)
-            ->where(function($query) use ($words) {
+            ->where(function ($query) use ($words) {
                 foreach ($words as $word) {
                     $query->orWhere('title', 'like', "%{$word}%");
                 }

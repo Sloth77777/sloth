@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Parts\API\Requests\Cart;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -22,7 +24,7 @@ class CartUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'quantity'   => 'required|integer|min:1',
+            'quantity' => 'required|integer|min:1',
         ];
     }
 }

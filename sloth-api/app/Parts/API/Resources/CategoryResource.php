@@ -1,10 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Parts\API\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @property mixed $id
+ * @property mixed $title
+ * @property mixed $full_hierarchy
+ */
 class CategoryResource extends JsonResource
 {
     /**
@@ -15,9 +22,9 @@ class CategoryResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->resource->id,
-            'title' => $this->resource->title,
-            'full' => $this->resource->full_hierarchy,
+            'id' => $this->id,
+            'title' => $this->title,
+            'full' => $this->full_hierarchy,
         ];
     }
 }

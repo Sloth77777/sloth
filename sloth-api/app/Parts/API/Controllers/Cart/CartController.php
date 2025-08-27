@@ -14,7 +14,8 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public function __construct(private readonly CartResolver $cartResolver)
-    {}
+    {
+    }
 
     public function index(Request $request): JsonResponse
     {

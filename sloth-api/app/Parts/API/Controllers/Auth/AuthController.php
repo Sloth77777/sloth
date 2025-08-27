@@ -16,7 +16,8 @@ use Illuminate\Http\JsonResponse;
 class AuthController extends Controller
 {
     use ErrorsTrait;
-    public function __construct(protected LoginAction $loginAction, protected RegisterAction $registerAction,protected LogoutAction $logoutAction)
+
+    public function __construct(protected LoginAction $loginAction, protected RegisterAction $registerAction, protected LogoutAction $logoutAction)
     {
 
     }
@@ -29,7 +30,6 @@ class AuthController extends Controller
         $result = $this->loginAction->login($request->toDto());
 
         return $this->getSuccessResponse([
-            'message' => 'Authentication successful',
             'token' => $result['token'],
             'user' => $result['user'],
         ]);

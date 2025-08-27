@@ -12,7 +12,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Product extends Model
 {
     /** @use HasFactory<\Database\Factories\Product\ProductFactory> */
-    use HasFactory,Filterable;
+    use HasFactory, Filterable;
+
     protected $table = 'products';
     protected $fillable = [
         'title',
@@ -32,6 +33,7 @@ class Product extends Model
     {
         return url('storage/' . $this->preview_image);
     }
+
     public function images(): HasMany
     {
         return $this->hasMany(ProductImages::class);

@@ -7,6 +7,20 @@ namespace App\Parts\API\Resources\Order;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @property mixed $id
+ * @property mixed $status
+ * @property mixed $currency
+ * @property mixed $subtotal
+ * @property mixed $total
+ * @property mixed $discount
+ * @property mixed $customer_name
+ * @property mixed $customer_email
+ * @property mixed $customer_phone
+ * @property mixed $shipping_address
+ * @property mixed $created_at
+ * @property mixed $items
+ */
 class OrderResource extends JsonResource
 {
     /**
@@ -15,19 +29,19 @@ class OrderResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->resource->id,
-            'status' => $this->resource->status,
-            'currency' => $this->resource->currency,
-            'subtotal' => $this->resource->subtotal,
-            'discount' => $this->resource->discount,
-            'total' => $this->resource->total,
-            'customer_name' => $this->resource->customer_name,
-            'customer_email' => $this->resource->customer_email,
-            'customer_phone' => $this->resource->customer_phone,
-            'shipping_address' => $this->resource->shipping_address,
-            'created_at' => $this->resource->created_at,
+            'id' => $this->id,
+            'status' => $this->status,
+            'currency' => $this->currency,
+            'subtotal' => $this->subtotal,
+            'discount' => $this->discount,
+            'total' => $this->total,
+            'customer_name' => $this->customer_name,
+            'customer_email' => $this->customer_email,
+            'customer_phone' => $this->customer_phone,
+            'shipping_address' => $this->shipping_address,
+            'created_at' => $this->created_at,
             'items' => $this->when(
-                $this->resource->relationLoaded('items'),
+                $this->relationLoaded('items'),
                 OrderItemResource::collection($this->items)
             ),
         ];

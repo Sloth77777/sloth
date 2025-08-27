@@ -28,7 +28,7 @@ class LoginRequest extends FormRequest
         ];
     }
 
-    public function toDto():LoginDTO
+    public function toDto(): LoginDTO
     {
         return LoginDTO::fromArray($this->validated());
     }

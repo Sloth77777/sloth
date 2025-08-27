@@ -11,7 +11,6 @@ use App\Parts\API\Repositories\ProductRepository;
 use App\Services\Service;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class ProductService extends Service
 {

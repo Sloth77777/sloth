@@ -34,11 +34,9 @@ class CartItemController extends Controller
 
                 $item->increment('quantity', $data['quantity']);
 
-                $item->load('product');
-
                 return response()->json([
                     'success' => true,
-                    'items'   => CartItemResource::collection($cart->items()->with('product')->get()),
+                    'items' => CartItemResource::collection($cart->items()->with('product')->get()),
                 ]);
             });
         } catch (\Throwable $e) {
@@ -60,7 +58,7 @@ class CartItemController extends Controller
 
             return response()->json([
                 'success' => true,
-                'item'    => new CartItemResource($item->load('product')),
+                'item' => new CartItemResource($item->load('product')),
             ]);
         } catch (\Throwable $e) {
             report($e);

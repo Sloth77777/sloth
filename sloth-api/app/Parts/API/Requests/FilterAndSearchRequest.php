@@ -3,7 +3,6 @@
 namespace App\Parts\API\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Log;
 
 class FilterAndSearchRequest extends FormRequest
 {
@@ -14,6 +13,7 @@ class FilterAndSearchRequest extends FormRequest
     {
         return true;
     }
+
     /**
      * Get the validation rules that apply to the request.
      *

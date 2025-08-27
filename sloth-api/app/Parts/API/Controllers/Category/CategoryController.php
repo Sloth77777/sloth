@@ -10,7 +10,6 @@ use App\Parts\API\Requests\Category\StoreCategoryRequest;
 use App\Parts\API\Requests\Category\UpdateCategoryRequest;
 use App\Parts\API\Resources\CategoryResource;
 use App\Parts\API\Services\Category\CategoryService;
-use App\Traits\ErrorsTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 

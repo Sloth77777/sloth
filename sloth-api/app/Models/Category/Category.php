@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models\Category;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,6 +23,7 @@ class Category extends Model
     {
         return $this->belongsTo(__CLASS__, 'parent_id');
     }
+
     public function getFullHierarchyAttribute(): string
     {
         if ($this->parent) {
